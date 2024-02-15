@@ -23,11 +23,9 @@ export class CursoService {
     }
 
     //Cadastrar curso
-    cadastrarCurso(c:Curso): Observable<Curso[]>{
-      return this.http.post<Curso[]>
-      (this.url+"cadastrar")
-      }
+    cadastrarCurso(c:Curso): Observable<
     }
-  
+  }
+
 
 
