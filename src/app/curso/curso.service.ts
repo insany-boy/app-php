@@ -28,7 +28,6 @@ export class CursoService {
       (this.url+"cadastrar")
       }
     }
-  }
+  
 
 
-5
