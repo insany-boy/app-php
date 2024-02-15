@@ -15,7 +15,7 @@ export class CursoComponent implements OnInit {
   vetor:Curso[] = [];
 
   //Objeto da classe Curso
-  curso = new Curso();
+  curso = new Curso("", 0);
 
   //Construtor
   constructor(private curso_servico:CursoService) { }
@@ -23,15 +23,15 @@ export class CursoComponent implements OnInit {
   //Inicializador
   ngOnInit() {
     
+  this.selecao();
+    
   }
 
 
     //Seleção
     selecao():void{
       this.curso_servico.obterCursos().subscribe(
-        (res: Curso[]) => {
-          
-        }
+        (res: Curso[]) => { this.vetor = res; }
       )
     }
 
