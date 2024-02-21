@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Curso } from './curso';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,9 +24,16 @@ export class CursoService {
     }
 
     //Cadastrar curso
-    cadastrarCurso(c:Curso): Observable<
+    cadastrarCurso(c:Curso): Observable<Curso>{
+      return this.http.post<Curso>(this.url + 'cadastrar', c);
     }
-  }
+    
+    removerCurso(id: any): Observable<Curso> {
+      
+      return this.http.delete(this.url +'excluir?idCurso=' + id);
+    } 
+    }
+  
 
 
 

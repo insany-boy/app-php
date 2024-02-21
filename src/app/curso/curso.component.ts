@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Curso } from './curso';
 import { CursoService } from './curso.service';
+import { Observable, filter } from 'rxjs';
 
 @Component({
   selector: 'app-curso',
@@ -16,6 +17,8 @@ export class CursoComponent implements OnInit {
 
   //Objeto da classe Curso
   curso = new Curso("", 0);
+  http: any;
+  url: string | undefined;
 
   //Construtor
   constructor(private curso_servico:CursoService) { }
@@ -35,12 +38,19 @@ export class CursoComponent implements OnInit {
       )
     }
 
-    //Cadastro
-    cadastro():void{
-    alert("Cadastro");
+    //Cadastrar Cursdo
+    cadastro(){
+      this.curso_servico.cadastrarCurso(this.curso).subscribe(() => {
 
+        this.curso.nomeCurso = "";
+        this.curso.valorCurso = 0;
+
+        this.selecao();
+      }
+
+      ) 
     }
-
+       
     //Alterar
     alterar():void{
       alert("Alterar");
@@ -48,7 +58,7 @@ export class CursoComponent implements OnInit {
 
     //Remover
     remover():void{
-      alert("Remover");
+      
     }
   }
 
