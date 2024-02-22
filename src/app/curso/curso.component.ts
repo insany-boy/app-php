@@ -52,14 +52,34 @@ export class CursoComponent implements OnInit {
     }
        
     //Alterar
-    alterar():void{
-      alert("Alterar");
+    alterar(){
+      this.curso_servico.atualizarCurso(this.curso).subscribe(
+        () => {
+
+        this.curso.nomeCurso = "";
+        this.curso.valorCurso = 0;
+
+        this.selecao();
+        }
+      )
     }
 
     //Remover
     remover():void{
+      this.curso_servico.removerCurso(this.curso).subscribe(() => {
+        this.curso.nomeCurso = "";
+        this.curso.valorCurso = 0;
+
+        this.selecao();
       
-    }
+      }
+     )
   }
 
-
+  //Selecionar curso especifico
+  selecionarCurso(c:Curso){
+    this.curso.idCurso = c.idCurso;
+    this.curso.nomeCurso = c.nomeCurso;
+    this.curso.valorCurso = c.valorCurso;
+  }
+}

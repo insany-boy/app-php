@@ -30,8 +30,12 @@ export class CursoService {
     
     removerCurso(id: any): Observable<Curso> {
       
-      return this.http.delete(this.url +'excluir?idCurso=' + id);
+      return this.http.delete<Curso>(this.url +'excluir?idCurso=' + id);
     } 
+
+    atualizarCurso(c:Curso): Observable<Curso> {
+      return this.http.put<Curso>(this.url+'alterar', c)
+    }
     }
   
 
